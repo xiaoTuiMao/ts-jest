@@ -34,6 +34,7 @@ before_install:
   #     fi
   # ensure we have npm >= 5.8 so that we can use `npm ci` instead of `npm install` (much faster)
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then dpkg --compare-versions `npm -v` ge 5.8 || npm i -g npm@latest; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then npm install -g npm@^5; fi
   # we report coverages only within node 10, ensure we have the coveralls bin installed
   - 'if [[ "$(node --version)" == v10.* ]]; then npm install --global coveralls; fi'
 
