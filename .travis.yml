@@ -15,12 +15,12 @@ os:
 
 node_js:
   - "10"
-  #- "8"
-  #- "6"
+#  - "8"
+#  - "6"
 
-sudo: false
+#sudo: false
 
-before_install:
+#before_install:
   # Disabled, randomly works :-/
   # https://github.com/scikit-learn/scikit-learn/issues/10927
   # - |
@@ -33,20 +33,22 @@ before_install:
   #       exit
   #     fi
   # ensure we have npm >= 5.8 so that we can use `npm ci` instead of `npm install` (much faster)
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then dpkg --compare-versions `npm -v` ge 5.8 || npm i -g npm@latest; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then dpkg --compare-versions `npm -v` ge 5.8 || npm i -g npm@latest; fi
   # we report coverages only within node 10, ensure we have the coveralls bin installed
-  - 'if [[ "$(node --version)" == v10.* ]]; then npm install --global coveralls; fi'
+#  - 'if [[ "$(node --version)" == v10.* ]]; then npm install --global coveralls; fi'
 
 script:
-  - npm run clean -- --when-ci-commit-message
+  - node -v
+  - npm -v
+#  - npm run clean -- --when-ci-commit-message
   # only grab coverage data on node 10
   - |
-      if [[ "$(node --version)" == v10.* ]]; then
-        npm run test -- --runInBand --coverage;
-      else
-        npm run test -- --runInBand;
-      fi
+#      if [[ "$(node --version)" == v10.* ]]; then
+#        npm run test -- --runInBand --coverage;
+#      else
+#        npm run test -- --runInBand;
+#      fi
 
-after_success:
+#after_success:
   # report coverages to coveralls
-  - 'if [[ "$(node --version)" == v10.* && -s coverage/lcov.info ]]; then cat coverage/lcov.info | coveralls; fi'
+#  - 'if [[ "$(node --version)" == v10.* && -s coverage/lcov.info ]]; then cat coverage/lcov.info | coveralls; fi'
