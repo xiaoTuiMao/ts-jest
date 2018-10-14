@@ -1,7 +1,7 @@
 language: node_js
 
 os:
-  - linux
+  #- linux
   - windows
 
 env:
@@ -11,12 +11,12 @@ cache:
   npm: true
   directories:
     - .cache
-    - /tmp/ts-jest-e2e-workdir/__templates__
+    #- /tmp/ts-jest-e2e-workdir/__templates__
 
 node_js:
   - "10"
-  - "8"
-  - "6"
+  #- "8"
+  #- "6"
 
 sudo: false
 
@@ -33,7 +33,7 @@ before_install:
   #       exit
   #     fi
   # ensure we have npm >= 5.8 so that we can use `npm ci` instead of `npm install` (much faster)
-  - dpkg --compare-versions `npm -v` ge 5.8 || npm i -g npm@latest
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then dpkg --compare-versions `npm -v` ge 5.8 || npm i -g npm@latest; fi
   # we report coverages only within node 10, ensure we have the coveralls bin installed
   - 'if [[ "$(node --version)" == v10.* ]]; then npm install --global coveralls; fi'
 
