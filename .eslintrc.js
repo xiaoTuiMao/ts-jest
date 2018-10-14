@@ -11,7 +11,7 @@ module.exports = {
   rules: {
     'no-console': ['error', { allow: ['warn', 'error', 'log'] }],
     indent: ['error', 2],
-    'linebreak-style': ['warn', 'unix'],
+    'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'comma-dangle': [
