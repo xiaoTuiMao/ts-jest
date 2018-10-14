@@ -38,7 +38,7 @@ before_install:
   - 'if [[ "$(node --version)" == v10.* ]]; then npm install --global coveralls; fi'
 
 install:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then && npm ci --ignore-scripts; else npm install; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then npm ci --ignore-scripts; else npm install; fi
 
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then eslint --fix .; fi
